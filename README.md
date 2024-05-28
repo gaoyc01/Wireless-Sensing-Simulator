@@ -5,6 +5,10 @@ Wireless Sensing Simulator can simulate the CSI data of any protocol under the 8
 
 We have verified the effectiveness of this tool in [Wi-Prox](https://ieeexplore.ieee.org/document/10437884)[<sup>2](). Furthermore, Wireless Sensing Simulator is open source, and all functionalities are implemented in software. Therefore, one can extend the functionalities of Wireless Sensing Simulator with their own codes under the GPL license.
 
+
+
 > [<sup>1]() http://tns.thss.tsinghua.edu.cn/wst/docs/welcome
 > 
 > [<sup>2]() Gao Y, Chi G, Zhang G, et al. Wi-Prox: Proximity Estimation of Non-Directly Connected Devices via Sim2Real Transfer Learning[C]//GLOBECOM 2023-2023 IEEE Global Communications Conference. IEEE, 2023: 5629-5634.
+
+![interface](/Fig/interface.png)
