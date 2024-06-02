@@ -1,4 +1,4 @@
-function [azimuth, elevation] = naive_aoa(csi_data, antenna_loc, est_rco, subcarrier_lambda)
+function azimuth = naive_aoa(csi_data, antenna_loc, est_rco, subcarrier_lambda)
     % naive_aoa
     % Input:
     %   - csi_data is the CSI used for angle estimation; [T S A L]
@@ -7,7 +7,6 @@ function [azimuth, elevation] = naive_aoa(csi_data, antenna_loc, est_rco, subcar
     %     you may ignore the est_rco if you don't know what it is. RCO will be introduced in Sec. 5.
     % Output:
     %   - aoa_mat is the angle estimation result; [3 T]
-
     csi_phase = unwrap(angle(csi_data), [], 2);    % [T S A L]
     % Get the antenna vector and its length.
     ant_diff = antenna_loc(:, 2:end) - antenna_loc(:, 1); % [3 A-1]
@@ -24,6 +23,9 @@ function [azimuth, elevation] = naive_aoa(csi_data, antenna_loc, est_rco, subcar
     % Broadcasting is performed, get the value of cos(theta) for each packet and each antenna pair.
     cos_mat = subcarrier_lambda .* phase_diff ./ (2 .* pi .* permute(ant_diff_length, [3 1 2])); % [T S A-1 L]
     cos_mat_mean = squeeze(mean(cos_mat, [2 4])); % [T A-1]
+    if size(cos_mat_mean,2) == 1
+        cos_mat_mean = cos_mat_mean';
+    end
     % Solve the linear equations: ant_diff_normalize' * aoa_sol = cos_mat_mean(p, :)'.
     aoa_mat_sol = ant_diff_normalize' \ cos_mat_mean'; % [3 T]
     % Normalize the result and resolve the singularity.
@@ -44,8 +46,9 @@ function [azimuth, elevation] = naive_aoa(csi_data, antenna_loc, est_rco, subcar
         azimuth_rad = azimuth_rad - pi;
     end
     azimuth = azimuth_rad * (180 / pi);
-    
-    elevation_rad = atan2(z, sqrt(x^2 + y^2));
-    elevation = elevation_rad * (180 / pi);
-
+    if azimuth > 0 
+        azimuth = azimuth - 180;
+    else
+        azimuth = azimuth + 180;
+    end
 end
