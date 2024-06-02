@@ -13,5 +13,5 @@ We have verified the effectiveness of this tool in [Wi-Prox](https://ieeexplore.
 
 <div style="text-align: center; display: flex; justify-content: space-between;">
   <img src="/Fig/interface.png" style="width: 40%;">
-  <img src="/Fig/raytracing.png" style="width: 50%;">
+  <img src="/Fig/raytracing.jpg" style="width: 50%;">
 </div>
