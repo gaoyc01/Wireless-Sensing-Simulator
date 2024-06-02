@@ -12,6 +12,6 @@ We have verified the effectiveness of this tool in [Wi-Prox](https://ieeexplore.
 > [<sup>2]() Gao Y, Chi G, Zhang G, et al. Wi-Prox: Proximity Estimation of Non-Directly Connected Devices via Sim2Real Transfer Learning[C]//GLOBECOM 2023-2023 IEEE Global Communications Conference. IEEE, 2023: 5629-5634.
 
 <div style="text-align: center; display: flex; justify-content: space-between;">
-  <img src="/Fig/interface.png" style="width: 40%;">
-  <img src="/Fig/raytracing.jpg" style="width: 50%;">
+  <img src="/Fig/interface.png" style="width: 48%;">
+  <img src="/Fig/raytracing.jpg" style="width: 42%;">
 </div>
